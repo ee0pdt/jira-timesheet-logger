@@ -14,7 +14,7 @@ A Python tool that reads timesheet data from CSV files and automatically logs wo
 
 ## Prerequisites
 
-- Python 3.6 or higher
+- Python 3.7 or higher
 - Valid Jira Cloud instance with API access
 - Jira API token (see setup instructions below)
 
