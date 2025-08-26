@@ -234,7 +234,7 @@ def main():
             for i, row in enumerate(reader):
                 date = row.get('Date', '').strip()
                 ticket = row.get('Jira Ticket Number', '').strip()
-                ticket_name = row.get('Ticket Name', '').strip()
+                work_description = row.get('Work Description', '').strip()
                 hours = row.get('Hours', '').strip()
                 
                 # Skip empty or zero hour entries
@@ -248,7 +248,11 @@ def main():
                     print(f"{Colors.YELLOW}Reached limit of {args.limit} entries{Colors.NC}")
                     break
                 
-                comment = f"Development work: {ticket_name}"
+                # Handle empty work description gracefully
+                if work_description:
+                    comment = work_description
+                else:
+                    comment = f"Work on {ticket}"
                 
                 if log_worklog(config, ticket, hours, date, comment, args.dry_run):
                     successful_entries += 1

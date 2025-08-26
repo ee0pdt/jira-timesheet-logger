@@ -58,16 +58,17 @@ A Python tool that reads timesheet data from CSV files and automatically logs wo
 Your timesheet CSV file should have the following columns:
 
 ```csv
-Date,Jira Ticket Number,Ticket Name,Hours
-2024-01-15,PROJ-123,Fix user authentication bug,2.5
-2024-01-15,PROJ-124,Update documentation,1.0
+Date,Jira Ticket Number,Work Description,Hours
+2024-01-15,PROJ-123,Investigated login flow and fixed OAuth redirect issue,2.5
+2024-01-15,PROJ-124,Updated API documentation with new endpoints,1.0
+2024-01-16,PROJ-125,,2.0
 ```
 
 ### Required Columns
 
 - **Date**: Date in YYYY-MM-DD format
 - **Jira Ticket Number**: The Jira issue key (e.g., PROJ-123)
-- **Ticket Name**: Description of the work (used in worklog comments)
+- **Work Description**: Description of the work done (optional - if empty, defaults to "Work on {ticket}")
 - **Hours**: Number of hours worked (decimal format supported)
 
 ## Usage
