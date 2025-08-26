@@ -21,7 +21,6 @@ setup(
     long_description=read_readme(),
     long_description_content_type="text/markdown",
     url="https://github.com/petethorne/jira-timesheet-logger",
-    py_modules=["log-timesheet"],
     install_requires=[
         "requests>=2.31.0",
         "python-dotenv>=0.19.0",
@@ -33,11 +32,6 @@ setup(
             "black>=23.0.0",
             "flake8>=6.0.0",
         ]
-    },
-    entry_points={
-        "console_scripts": [
-            "jira-timesheet-logger=log-timesheet:main",
-        ],
     },
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -56,8 +50,4 @@ setup(
     ],
     python_requires=">=3.7",
     keywords="jira timesheet logging api automation",
-    include_package_data=True,
-    package_data={
-        "": ["*.md", "*.txt", ".env.example"],
-    },
 )
