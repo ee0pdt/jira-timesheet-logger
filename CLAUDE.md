@@ -36,6 +36,34 @@ pip install -r requirements.txt
 pip install black flake8 pytest pytest-cov
 ```
 
+### Git Workflow - IMPORTANT
+**NEVER push directly to main/master branch.** Always use feature branches:
+
+```bash
+# 1. Create and switch to feature branch
+git checkout -b feature/your-feature-name
+# or for fixes: git checkout -b fix/issue-description
+
+# 2. Make your changes and commits on the branch
+
+# 3. Push feature branch
+git push -u origin feature/your-feature-name
+
+# 4. Create Pull Request via GitHub CLI or web interface
+gh pr create --title "Description of changes" --body "Detailed explanation"
+
+# 5. After PR is merged, clean up
+git checkout main
+git pull origin main
+git branch -d feature/your-feature-name
+```
+
+**Branch Naming Convention:**
+- `feature/add-custom-fields` - New functionality
+- `fix/datetime-comparison-bug` - Bug fixes  
+- `docs/improve-readme` - Documentation updates
+- `refactor/validation-functions` - Code refactoring
+
 ### IMPORTANT: Always Run Before Committing
 After making code changes, always run these commands locally to avoid CI failures:
 

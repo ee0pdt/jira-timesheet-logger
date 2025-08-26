@@ -88,9 +88,21 @@ For new features:
 
 #### Pull Request Process
 
-1. **Branch naming**: Use descriptive names like `fix-date-validation` or `add-custom-fields`
+1. **NEVER push directly to main**: Always create feature branches
+   ```bash
+   git checkout -b feature/your-feature-name
+   # Make changes, test, commit
+   git push -u origin feature/your-feature-name
+   gh pr create --title "Your change description"
+   ```
 
-2. **Commit messages**: Use clear, descriptive commit messages
+2. **Branch naming**: Use descriptive names with prefixes:
+   - `feature/add-custom-fields` - New functionality
+   - `fix/datetime-bug` - Bug fixes
+   - `docs/update-readme` - Documentation
+   - `refactor/validation` - Code improvements
+
+3. **Commit messages**: Use clear, descriptive commit messages
    ```
    Add validation for ticket format
    
