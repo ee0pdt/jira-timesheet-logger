@@ -44,7 +44,6 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
@@ -53,6 +52,6 @@ setup(
         "Topic :: Software Development :: Tools",
         "Topic :: Office/Business :: Scheduling",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     keywords="jira timesheet logging api automation",
 )

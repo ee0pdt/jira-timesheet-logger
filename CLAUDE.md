@@ -154,7 +154,7 @@ Always test with `--dry-run` mode first before making actual API calls to avoid 
 ### Dependency Compatibility
 - **Issue**: Python version compatibility problems (e.g., python-dotenv 1.0+ requires Python 3.8+)
 - **Solution**: Check minimum versions in requirements.txt match python_requires in setup.py
-- **Current**: Uses python-dotenv>=0.19.0 for Python 3.7+ compatibility
+- **Current**: Uses python-dotenv>=0.19.0 for Python 3.8+ compatibility
 
 ### Test Import Errors
 - **Issue**: Tests can't import modules with hyphens in filename
