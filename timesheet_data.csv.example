@@ -1,0 +1,5 @@
+Date,Jira Ticket Number,Ticket Name,Hours
+2024-01-15,PROJ-123,Fix user authentication bug,2.5
+2024-01-15,PROJ-124,Update documentation,1.0
+2024-01-16,PROJ-123,Fix user authentication bug,4.5
+2024-01-16,PROJ-125,Code review and testing,2.0
