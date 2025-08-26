@@ -130,7 +130,8 @@ def log_worklog(config: Dict[str, str], ticket: str, hours: str, date_str: str, 
     try:
         date_obj = datetime.strptime(date_str.strip(), '%Y-%m-%d')
         # Check if date is not too far in the future
-        if date_obj > datetime.now().replace(tzinfo=timezone.utc):
+        current_date = datetime.now().date()
+        if date_obj.date() > current_date:
             print(f"  {Colors.YELLOW}⚠ Warning: Future date detected: {date_str}{Colors.NC}")
         
         start_datetime = date_obj.replace(hour=9, minute=0, second=0, microsecond=0, tzinfo=timezone.utc)
