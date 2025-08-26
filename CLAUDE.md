@@ -27,45 +27,42 @@ This is a single-file Python CLI tool that reads CSV timesheet data and logs wor
 4. Transform to Jira worklog API format (ISO datetime, comment structure)
 5. Submit via HTTP POST with authentication and rate limiting
 
-## Common Development Commands
+## Essential Development Commands
 
-### Setup and Dependencies
+### Setup
 ```bash
-# Install core dependencies
+# Install dependencies (including dev tools)
 pip install -r requirements.txt
+pip install black flake8 pytest pytest-cov
+```
 
-# Install with development tools
-pip install -e .[dev]
+### IMPORTANT: Always Run Before Committing
+After making code changes, always run these commands locally to avoid CI failures:
+
+```bash
+# 1. Format code (REQUIRED - CI will fail if not formatted)
+black log-timesheet.py setup.py test_log_timesheet.py
+
+# 2. Check linting
+flake8 log-timesheet.py
+
+# 3. Run tests
+pytest
+
+# 4. Test the tool with dry-run
+python log-timesheet.py --dry-run --limit 3
 ```
 
 ### Running the Tool
 ```bash
-# Dry run mode (recommended for testing)
+# Always test with dry-run first
 python log-timesheet.py --dry-run --limit 5
 
 # Process specific CSV file
 python log-timesheet.py --csv custom-timesheet.csv
 
-# Full execution
+# Full execution (only after dry-run testing)
 python log-timesheet.py
-```
-
-### Development and Testing
-```bash
-# Run tests
-pytest
-
-# Run tests with coverage
-pytest --cov=log-timesheet --cov-report=xml
-
-# Linting
-flake8 log-timesheet.py
-
-# Code formatting
-black log-timesheet.py
-
-# Run single test class
-pytest test_log_timesheet.py::TestValidation -v
 ```
 
 ## Configuration Requirements
@@ -118,6 +115,22 @@ Focus on boundary conditions for:
 
 ### Integration Testing
 Always test with `--dry-run` mode first before making actual API calls to avoid accidental data submission during development.
+
+## Common CI Failures and Solutions
+
+### Black Formatting Failures
+- **Issue**: CI fails with "would reformat X files"
+- **Solution**: Run `black *.py` locally before committing
+- **Prevention**: Always format code as part of pre-commit routine
+
+### Dependency Compatibility
+- **Issue**: Python version compatibility problems (e.g., python-dotenv 1.0+ requires Python 3.8+)
+- **Solution**: Check minimum versions in requirements.txt match python_requires in setup.py
+- **Current**: Uses python-dotenv>=0.19.0 for Python 3.7+ compatibility
+
+### Test Import Errors
+- **Issue**: Tests can't import modules with hyphens in filename
+- **Solution**: Use importlib.util.spec_from_file_location() pattern (already implemented)
 
 ## Security Considerations
 
